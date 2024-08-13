@@ -1,2 +1,18 @@
-slm
-khobi?
+Algorithm Diffrantioal Testing
+Input: A1, A2, (Xtrain, Ytrain), (Xtest, Ytest) 
+Output: Number of differences Δtrain, Δtest , Δ_score^train , Δ_score^test, and p-values, P_KS^train, P_KS^test, P_(X^2)^train , P_(X^2)^test
+// Run training 
+f¹, f1score ← A1(Xtrain, ytrain) 
+f², f2score ← A2(Xtrain, ytrain) 
+// Criterion 1: Absolute differences between classes 
+Δtrain ← ∑_(i=1)^(n^train)〖lf^1 〖(x〗_i^train)〗≠f^2 (x_i^train)
+Δtest ←  ∑_(i=1)^(n^test)〖lf^1 〖(x〗_i^test)〗≠f^2 (x_i^test)
+// Criterion 2: Absolute differences between scores 
+Δ_score^train   ← ∑_(i=1)^(n^train)〖lf_score^1 〖(x〗_i^train 〗)≠f_score^2 (x_i^train)
+Δ_score^test ← ∑_(i=1)^(n^test)〖lf_score^1 〖(x〗_i^test 〗)≠f_score^2 (x_i^test)
+// Criterion 3: Significance of difference between scores
+ P_KS^train ← KS.test (f_score^1 (X^train ),f_score^2 (X^train))
+P_KS^test ← KS.test (f_score^1 (X^test ),f_score^2 (X^test))
+// Criterion 4: Significance of difference between classifications 
+P_(X^2)^train  ← X2.test (f^1 (X^train ),f^2 (X^train))
+P_(X^2)^test  ← X2.test (f^1 (X^test ),f^2 (X^test))
